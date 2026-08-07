@@ -830,6 +830,10 @@ body {
   height: 100vh;
   position: relative;
   overflow: hidden;
+  background-image: url('/bg_top.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   background-color: var(--color-ivory);
 }
 

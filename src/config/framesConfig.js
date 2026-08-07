@@ -4,8 +4,8 @@
  */
 
 export const FRAME_CONFIG = {
-  // Total number of frames in the sequence (001.webp to 101.webp)
-  totalFrames: 101,
+  // Total number of frames in the sequence (001.webp to 056.webp)
+  totalFrames: 56,
   
   // Base path from which the images are fetched
   basePath: '/images/',

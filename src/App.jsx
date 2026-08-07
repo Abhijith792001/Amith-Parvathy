@@ -7,7 +7,6 @@ import useFrameSequence from './hooks/useFrameSequence';
 import useScrollControl from './hooks/useScrollControl';
 
 // Import wedding invitation sections
-import SectionBrideGroom from './components/SectionBrideGroom';
 import SectionInvitationText from './components/SectionInvitationText';
 import SectionFamilyDetails from './components/SectionFamilyDetails';
 import SectionWeddingDetails from './components/SectionWeddingDetails';
@@ -97,7 +96,6 @@ export default function App() {
         Uses bgwebsite.png as the continuous background.
       */}
       <div className="wedding-details-wrapper website-background">
-        <SectionBrideGroom />
         <SectionInvitationText />
         <SectionFamilyDetails />
         <SectionWeddingDetails />

@@ -4,9 +4,9 @@ import React, { forwardRef } from 'react';
  * High-performance Canvas wrapper component.
  * Renders the HTML5 Canvas inside a fluid wrapper that fills the viewport.
  */
-export const InvitationCanvas = forwardRef((props, ref) => {
+export const InvitationCanvas = forwardRef(({ style, ...props }, ref) => {
   return (
-    <div className="canvas-wrapper">
+    <div className="canvas-wrapper" style={style}>
       <canvas
         ref={ref}
         className="invitation-canvas"
