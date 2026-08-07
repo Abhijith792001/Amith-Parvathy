@@ -30,8 +30,8 @@ export const useScrollControl = (triggerRef, pinRef, onFrameChange, onProgressCh
     const st = ScrollTrigger.create({
       trigger: triggerEl,
       start: 'top top',
-      // 200vh gives a fast, continuous feel (about 8px per frame)
-      end: '+=200%',
+      // 350vh total scroll duration: 0-65% plays animation frames, 65-100% holds frame 56 to read card details
+      end: '+=350%',
       pin: pinEl,
       pinSpacing: true,
       anticipatePin: 1,
@@ -49,7 +49,11 @@ export const useScrollControl = (triggerRef, pinRef, onFrameChange, onProgressCh
 
         const progress = self.progress;
         const total = FRAME_CONFIG.totalFrames;
-        const frameIndex = Math.round(progress * (total - 1)) + 1;
+        
+        // Map 0.0 - 0.65 of scroll progress to frames 1 to 56.
+        // Remaining 0.65 - 1.0 holds frame 56 so guests can read the wedding card details comfortably.
+        const animProgress = Math.min(1, progress / 0.65);
+        const frameIndex = Math.round(animProgress * (total - 1)) + 1;
 
         onFrameChange(frameIndex);
         if (onProgressChange) onProgressChange(progress);
@@ -74,7 +78,8 @@ export const useScrollControl = (triggerRef, pinRef, onFrameChange, onProgressCh
           if (onProgressChange) onProgressChange(1);
         } else if (self.progress > 0 && self.isActive) {
           const total = FRAME_CONFIG.totalFrames;
-          const frameIndex = Math.round(self.progress * (total - 1)) + 1;
+          const animProgress = Math.min(1, self.progress / 0.65);
+          const frameIndex = Math.round(animProgress * (total - 1)) + 1;
           onFrameChange(frameIndex);
           if (onProgressChange) onProgressChange(self.progress);
         }
